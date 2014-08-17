@@ -1,6 +1,6 @@
 {
   "name": "kws-media-api",
-  "version": "4.3.19-SNAPSHOT",
+  "version": "4.3.20-SNAPSHOT",
   "description": "Media API for the Kurento Web SDK",
   "homepage": "http://www.kurento.org",
   "license": "LGPL",
