@@ -317,8 +317,10 @@ function CpbWebRtc()
    */
   this.start = function(offer, callback)
   {
-    kwsMedia = KwsMedia(endpoint, function(kwsMedia)
+    kwsMedia = KwsMedia(endpoint, function(error, kwsMedia)
     {
+      if(error) return callback(error);
+
       // Create pipeline
       kwsMedia.create('MediaPipeline', function(error, pipeline)
       {

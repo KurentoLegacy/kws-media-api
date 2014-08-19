@@ -13,8 +13,8 @@
  *
  */
 
-const ws_uri = 'ws://130.206.81.87/thrift/ws/websocket';
 
+const ws_uri = 'ws://130.206.81.87/thrift/ws/websocket';
 
 function processOffer(peerConnection, offer, onsuccess, onerror)
 {
@@ -62,8 +62,10 @@ getUserMedia({'audio': true, 'video': true}, function(stream)
 
   videoInput.src = URL.createObjectURL(stream);
 
-  KwsMedia(ws_uri, function(kwsMedia)
+  KwsMedia(ws_uri, function(error, kwsMedia)
   {
+    if(error) return console.error(error);
+
     // Create pipeline
     kwsMedia.create('MediaPipeline', function(error, pipeline)
     {

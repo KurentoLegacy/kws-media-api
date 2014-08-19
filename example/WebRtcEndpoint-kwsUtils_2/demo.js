@@ -32,8 +32,10 @@ window.addEventListener('load', function()
   {
     console.log('offer+candidates', offer);
 
-    KwsMedia(ws_uri, function(kwsMedia)
+    KwsMedia(ws_uri, function(error, kwsMedia)
     {
+      if(error) return onerror(error);
+
       // Create pipeline
       kwsMedia.create('MediaPipeline', function(error, pipeline)
       {

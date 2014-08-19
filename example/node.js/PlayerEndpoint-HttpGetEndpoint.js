@@ -17,8 +17,10 @@ function onerror(error)
 };
 
 
-var kwsMedia = KwsMedia(ws_uri, function(kwsMedia)
+var kwsMedia = KwsMedia(ws_uri, function(error, kwsMedia)
 {
+  if(error) return console.error(error);
+
   // Create pipeline
   kwsMedia.create('MediaPipeline', function(error, pipeline)
   {

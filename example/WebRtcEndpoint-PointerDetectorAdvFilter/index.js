@@ -34,8 +34,10 @@ getUserMedia({'audio': true, 'video': true}, function(stream)
   videoInput.src = URL.createObjectURL(stream);
 
   KwsMedia('ws://192.168.0.106:7788/thrift/ws/websocket',
-  function(kwsMedia)
+  function(error, kwsMedia)
   {
+    if(error) return console.error(error);
+
     // Create pipeline
     kwsMedia.createMediaPipeline(function(error, pipeline)
     {
@@ -95,3 +97,4 @@ function(error)
 {
   console.error('An error ocurred:',error);
 });
+

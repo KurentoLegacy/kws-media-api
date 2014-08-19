@@ -1,7 +1,6 @@
 var PlayerEndpoint  = KwsMedia.endpoints.PlayerEndpoint;
 var HttpGetEndpoint = KwsMedia.endpoints.HttpGetEndpoint;
 
-
 const ws_uri = 'ws://193.147.51.35:7788/thrift/ws/websocket';
 
 const URL_SMALL = "http://files.kurento.org/video/small.webm";
@@ -38,8 +37,10 @@ window.addEventListener('load', function()
     access_token: getQueryVariable('access_token')
   };
 
-  KwsMedia(ws_uri, options, function(kwsMedia)
+  KwsMedia(ws_uri, options, function(error, kwsMedia)
   {
+    if(error) return onerror(error);
+
     // Create pipeline
     kwsMedia.createMediaPipeline(function(error, pipeline)
     {
